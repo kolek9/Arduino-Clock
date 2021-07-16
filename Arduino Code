@@ -11,8 +11,9 @@ bool h12Flag;
 bool pmFlag;
 int hour;
 int minute;
-int second;
 String digits;
+String hours;
+
 
 //select pins for each segment
 int a = 1;
@@ -32,16 +33,10 @@ int d1 = 12;
 long n = 1230;
 int x = 100;
 int del = 55;  // fine adjustment for clock
+String minutes;
    
 void setup()
 {
-  //IF TIME IS INCORRECT, Run:
-  //clock.setHour(x);
-  //clock.setMinute(x);
-  //clock.setSecond(x);
-  //replace x with correct time
-  //as long as battery is charged in clock module, you should only run this once, as time should stay even after disconnect
-    
   pinMode(d1, OUTPUT);
   pinMode(d2, OUTPUT);
   pinMode(d3, OUTPUT);
@@ -55,15 +50,38 @@ void setup()
   pinMode(g, OUTPUT);
   pinMode(dp, OUTPUT);
   Wire.begin();
+    
+  //IF TIME IS INCORRECT, Run the following under Wire.begin():
+  //clock.setHour(x);
+  //clock.setMinute(11);
+  //clock.setSecond(7);
+  //replace x with correct time
+  //as long as battery is charged in clock module, you should only run this once, as time should stay even after disconnect
+  
+  //NOTE: The use of Serial may cause the numbers to appear strange
 }
 void loop()
 {
  //get time from clock
  hour = clock.getHour(h12Flag, pmFlag);
  minute = clock.getMinute();     
- second = clock.getSecond();
- digits = String(hour) + String(minute);
+
+ //if minutes or hours single digit, add a 0 in the display to keep it 4 digits 
+ if(minute >=0 && minute <10){
+  minutes = String(0) + String(minute);
+ }
+ else{
+  minutes = String(minute);
+ }
  
+ if(hour >=0 && hour <10){
+  hours = String(0) + String(hour);
+ }
+ else{
+  hours = String(hour);
+ }
+ digits = hours + minutes;
+  
  //convert string digits to individual digits= integers to display
  if(digits[0] == '0'){
   Display(1, 0);
