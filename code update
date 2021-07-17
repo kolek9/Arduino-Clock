@@ -151,64 +151,64 @@ void loop(){
       currs = String(currm);
     }
     if(currs[0] == '0'){
-      Display(1, 0);
+      Display(3, 0);
     }
     if(currs[0] == '1'){
-      Display(1, 1);
+      Display(3, 1);
     }
     if(currs[0] == '2'){
-     Display(1, 2);
+     Display(3, 2);
     }
     if(currs[0] == '3'){
-     Display(1, 3);
+     Display(3, 3);
     }
     if(currs[0] == '4'){
-     Display(1, 4);
+     Display(3, 4);
     }
     if(currs[0] == '5'){
-     Display(1, 5);
+     Display(3, 5);
     }
     if(currs[0] == '6'){
-     Display(1, 6);
+     Display(3, 6);
     }
     if(currs[0] == '7'){
-     Display(1, 7);
+     Display(3, 7);
     }
     if(currs[0] == '8'){
-     Display(1, 8);
+     Display(3, 8);
     }
     if(currs[0] == '9'){
-     Display(1, 9);
+     Display(3, 9);
     }
     if(currs[1] == '0'){
-     Display(2, 0);
+     Display(4, 0);
     }
     if(currs[1] == '1'){
-     Display(2, 1);
+     Display(4, 1);
     }
     if(currs[1] == '2'){
-     Display(2, 2);
+     Display(4, 2);
     }
     if(currs[1] == '3'){
-     Display(2, 3);
+     Display(4, 3);
     }
     if(currs[1] == '4'){      
-     Display(2, 4);
+     Display(4, 4);
     }
     if(currs[1] == '5'){
-     Display(2, 5);
+     Display(4, 5);
     }
     if(currs[1] == '6'){
-     Display(2, 6);
+     Display(4, 6);
     }
     if(currs[1] == '7'){
-     Display(2, 7);
+     Display(4, 7);
     }
     if(currs[1] == '8'){
-     Display(2, 8);
+     Display(4, 8);
     }
     if(currs[1] == '9'){
-     Display(2, 9);
+     Display(4, 9);
     }
     
     mval = digitalRead(mbutt);
