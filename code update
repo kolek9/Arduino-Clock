@@ -258,7 +258,12 @@ void loop(){
  }
 
  if(twelve){
-  hour = hour - 12;
+  if(hour > 12){
+    hour = hour - 12;
+  }
+  if(hour == 0){
+    hour = 12;
+  }
  }
 
  //if minutes or hours single digit, add a 0 in the display to keep it 4 digits 
@@ -272,6 +277,7 @@ void loop(){
  if(hour >=0 && hour <10){
   hours = String(0) + String(hour);
  }
+ 
  else{
   hours = String(hour);
  }
