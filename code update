@@ -17,12 +17,16 @@ int hbutt = 17;
 int mbutt = 14;
 int up = 16;
 int down = 15;
+int type = 19;
+int tval;
 int hval;
 int mval;
 int uval;
 int dval;
 bool hpress = false;
 bool mpress = false;
+bool twelve = false;
+
 
 
 //select pins for each segment
@@ -64,7 +68,7 @@ void setup()
   pinMode(up, INPUT);
   pinMode(down, INPUT);
   Wire.begin();
-    
+      
   //IF TIME IS INCORRECT, Run the following under Wire.begin():
   //clock.setHour(x);
   //clock.setMinute(11);
@@ -241,7 +245,21 @@ void loop(){
 
  //get time from clock
  hour = clock.getHour(h12Flag, pmFlag);
- minute = clock.getMinute();     
+ minute = clock.getMinute(); 
+ tval = digitalRead(type);
+ if(tval == HIGH){
+  delay(200);
+  if(twelve){
+    twelve = false;
+  }
+  else{
+    twelve = true;
+  }
+ }
+
+ if(twelve){
+  hour = hour - 12;
+ }
 
  //if minutes or hours single digit, add a 0 in the display to keep it 4 digits 
  if(minute >=0 && minute <10){
